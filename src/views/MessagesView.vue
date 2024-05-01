@@ -9,6 +9,9 @@ const end = ref(null)
 const channelId = ref(null)
 const title = ref('')
 
+const people = reactive([])
+const message = reactive([])
+
 const messagesView = computed(() => messages.map((message) => {
   const author = people.find((p) => p.id === message.author)
   if (!author) return message;
