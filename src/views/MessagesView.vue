@@ -99,7 +99,7 @@ scrollToBottom()
 .messages {
   @apply flex flex-col h-full;
   header {
-    @apply flex justify-between items-center px-6 py-2;
+    @apply flex justify-between items-center px-6 py-4 bg-zinc-800;
     h2 {
       @apply font-bold text-2xl;
     }
