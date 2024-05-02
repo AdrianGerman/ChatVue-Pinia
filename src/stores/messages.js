@@ -109,7 +109,7 @@ export default defineStore("messages", {
         author: 1,
         channelId,
         message,
-        timestamp: new Data().toLocaleTimeString(),
+        timestamp: new Date().toLocaleDateString(),
         read: false,
       });
     },
