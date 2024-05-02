@@ -34,6 +34,13 @@ const addMessage = () => {
   message.value = ''
 }
 
+const contactsView = computed(() => {
+  const contacts = messagesView.value.map((message) => message.author);
+  return contacts.filter((contact, index) => {
+    return contacts.findIndex((c) => c.id === contact.id) === index;
+  });
+});
+
 const scrollToBottom = () => {
   end.value?.scrollIntoView({
     behavior: 'smooth'
@@ -59,10 +66,11 @@ scrollToBottom()
       <div class="people-list">
         <div
           class="people-item"
-          v-for="p in people"
-          :key="p.id"
+          v-for="contact in contactsView"
+          :key="contact.id"
         >
-          <img :src="p.avatar" :alt="p.name" />
+          <img :src="contact.avatar" :alt="contact.name" />
+          <p>{{ contact.name }}</p>
         </div>
       </div>
     </header>
@@ -98,9 +106,9 @@ scrollToBottom()
     .people-list {
       @apply flex gap-1;
       .people-item {
-        @apply flex justify-center items-center border-4 border-neutral-700 rounded-full;
+        @apply flex justify-center items-center gap-2 mr-2;
         img {
-          @apply w-8 rounded-full;
+          @apply w-8 border-4 border-neutral-700 rounded-full;
         }
       }
     }
