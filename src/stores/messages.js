@@ -102,4 +102,16 @@ export default defineStore("messages", {
         .length;
     },
   },
+  actions: {
+    addMessage(channelId, message) {
+      this.messages.push({
+        id: Math.random(),
+        author: 1,
+        channelId,
+        message,
+        timestamp: new Data().toLocaleTimeString(),
+        read: false,
+      });
+    },
+  },
 });
