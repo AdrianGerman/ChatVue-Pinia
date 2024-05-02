@@ -4,10 +4,14 @@ import { useRoute } from 'vue-router'
 import MessageItem from '@/components/MessageItem.vue'
 import useMessagesStore from '@/stores/messages.js'
 import useContactsStore from '@/stores/contacts.js'
+import useChannelsStore from '@/stores/channels.js'
+
 
 const route = useRoute()
 const messagesStore = useMessagesStore()
 const contactsStore = useContactsStore()
+const channelsStore = useChannelsStore();
+
 
 const end = ref(null)
 const channelId = ref(null)
@@ -51,7 +55,7 @@ scrollToBottom()
 <template>
   <div class="messages">
     <header>
-      <h2>{{ title }}</h2>
+      <h2>{{ channelsStore.getChannelTitle(channelId) }}</h2>
       <div class="people-list">
         <div
           class="people-item"

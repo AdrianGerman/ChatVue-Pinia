@@ -25,5 +25,8 @@ export default defineStore("channels", {
           };
         });
     },
+    getChannelTitle: (state) => (channelId) => {
+      return state.channels.find((channel) => channel.id === channelId).name;
+    },
   },
 });
